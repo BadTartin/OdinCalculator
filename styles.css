@@ -7,6 +7,9 @@
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     width: 300px;
     height: 500px;
+    border: 5px solid grey;
+    padding: 15px;
+    border-radius: 6px;
 }
 
 .clear {
@@ -19,7 +22,7 @@
     grid-column-end: 3;
 }
 
-.calBtn {
+button {
     border: 2px solid grey;
     border-radius: 6px;
     /* text-align: center; */
@@ -32,6 +35,8 @@
     grid-column-end: 5;
     border: 2px solid lightgrey;
     border-radius: 6px;
+    background-color: rgb(245, 245, 245);
     font-size: 18pt;
+    /* font-family: Orbitron; */
     padding: 8% 0 0 0;
 }

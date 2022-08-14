@@ -36,3 +36,31 @@ function operate (oper, num1, num2) {
       } 
 }
 
+// Create the functions that populate the display when you 
+// click the number buttons. You should be storing the 
+// ‘display value’ in a variable somewhere for use in the next step.
+
+var display = document.querySelector('.display');
+
+var btns = document.querySelectorAll('button');
+
+btns.forEach(function (button) {
+    button.addEventListener("click", function () {
+        console.log(this.innerText);
+        switch (this.classList[0]) {
+          case 'calBtn':
+            display.innerText += this.innerText;
+            break;
+          case 'clear':
+            display.innerText = ''
+            break;
+          case 'del':
+            display.innerText = display.innerText.slice(0, -1)
+            break;
+        }
+        console.log(this.classList[0]);
+        
+    });
+});
+
+

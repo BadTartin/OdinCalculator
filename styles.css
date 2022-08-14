@@ -1,2 +1,26 @@
 /* styles.css */
 
+.calContainer {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 300px;
+    height: 500px;
+}
+
+.clear {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+.zero {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.calBtn {
+    border: 2px solid grey;
+    border-radius: 6px;
+    text-align: center;
+    padding: 20px;
+}

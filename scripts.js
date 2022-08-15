@@ -1,21 +1,23 @@
 // basic math functions
 function add (a, b) {
-    return a + b;
+    return Number(a) + Number(b);
 };
 
 function subtract (a, b) {
-    return a - b;
+    return Number(a) - Number(b);
 };
 
 function multiply (a, b) {
-    return a * b;
+    return Number(a) * Number(b);
 }
 
 function divide (a, b) {
-    return a / b;
+    if (b == 0) {
+        return 'Can\'t Do That!'
+    }
+    else { return Number(a) / Number(b) };
 }
 
-// operator function
 // takes an operator and 2 numbers and then 
 // calls one of the above functions on the numbers
 
@@ -47,17 +49,21 @@ var btns = document.querySelectorAll('button');
 var memory = document.querySelector('.memory');
 var operator = '';
 var toClear = 'false';
+// var point = 'false';
 
 btns.forEach(function (button) {
-    button.addEventListener("click", function () {
-        // console.log(this.innerText);
- 
+    button.addEventListener("click", function () { 
         switch (this.classList[0]) {
           case 'calBtn':
             if (toClear == 'true') { 
                 display.innerText = '';
                 toClear = 'false';
+                point = 'false';
              }
+            if (this.innerText.includes(".") && 
+              display.innerText.includes(".")) {
+                break;
+            }
             display.innerText += this.innerText;
             break;
           case 'clear':
@@ -69,10 +75,16 @@ btns.forEach(function (button) {
             break;
           case 'operator':
             var numOne = Number(display.innerText);
+            
+            if (memory.innerText == '') {
+                memory.innerText = numOne;
+                display.innerText = this.innerText;
+            }
+            else {
+                memory.innerText = operate(operator, Number(memory.innerText), Number(display.innerText));
+                display.innerText = this.innerText;
+            }
             operator = this.classList[1];
-            // console.log(operator);
-            memory.innerText = numOne;
-            display.innerText = this.innerText;
             toClear = 'true';
             break;
           case 'equals':
@@ -80,49 +92,20 @@ btns.forEach(function (button) {
                 break;
             }
             else {
-                toClear = 'true'
-                // console.log('else');
-                // console.log(typeof operator);
-                // result = (Number(memory.innerText) + Number(display.innerText));
-                result = operate(operator, Number(memory.innerText), Number(display.innerText));
+                toClear = 'true';
+                result = operate(operator, memory.innerText, display.innerText);
                 display.innerText = result;
                 memory.innerText = '';
                 break;
             }
         }
-        // console.log(this.classList[0]);
         
     });
 });
 
-// You need to modify numOne to an array so each number clicked gets added to the array. Then when you calculate the answer you loop through them with forEach and operate() with the operator
-// function operate (oper, num) { // remove num2
-//     let total = 0;
-//     num.forEach(function(n){
-//         total = oper(total,n);
-//     })
-//     return total;
-// }
+// add operator to memory display
+// change display font to calculator type
 
-// var numOne = [];
-// ...
 
-// case 'calBtn':
-//       if (toClear == 'true') { 
-//             display.innerText = '';
-//             toClear = 'false';
-//       }
-//       numOne.push(Number(this.innerText)) // add clicked num to array
-//       break;
 
-// ...
-
-// case 'equals':
-//       if (numOne.length === 0 || memory.innerText === '') {
-//           break;
-//       } else {
-//           toClear = 'true'
-//           result = operate(operator, numOne)  // pass array to operate
-//           display.innerText = result;
-//           memory.innerText = '';
 

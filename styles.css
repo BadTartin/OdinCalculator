@@ -22,7 +22,12 @@
 .clear {
     grid-column-start: 1;
     grid-column-end: 3;
+    background-color: darkgrey;
   }
+
+.del {
+    background-color: darkgrey;
+}
 
 .zero {
     grid-column-start: 1;
@@ -59,15 +64,16 @@ button {
     text-align: center;
     font-size: 30pt;
     font-family: "Digital7", Verdana, Tahoma;
+    height: 40px;
 }
 
 .memory {
     padding: 0;
-    margin-top: 0;
-    margin-right: 10px;
+    margin: 0 10px 0 0;
     text-align: right;
     height: 1em;
     font-family: "Digital7", Verdana, Tahoma;
+    font-size: 20px;
 }
 
 

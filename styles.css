@@ -35,7 +35,6 @@ button {
     background-color: lightgrey;
 }
 
-
 .operator, .equals  {
     background-color: lightblue;
 }
@@ -44,22 +43,22 @@ button {
     grid-column-start: 1;
     grid-column-end: 5;
     grid-template-rows: 1fr 2fr 1fr;
-    /* grid-template-rows: 10px 20px 10px; */
     border: 2px solid lightgrey;
     border-radius: 6px;
     background-color: rgb(245, 245, 245);
     height: 5em;
 }
 
+@font-face {
+    font-family: "Digital7";
+    src: url(digital-7-font/Digital7-1e1Z.ttf) format("truetype");
+    /* src: url(Orbitron/Orbitron-VariableFont_wght.ttf) format("truetype"); */
+}
+
 .display {
     text-align: center;
-    /* border: 2px solid lightgrey; */
-    /* border-radius: 6px; */
-    /* background-color: rgb(245, 245, 245); */
-    font-size: 20pt;
-    /* margin: auto; */
-    /* font-family: Orbitron; */
-    /* padding: 8% 0 0 0; */
+    font-size: 30pt;
+    font-family: "Digital7", Verdana, Tahoma;
 }
 
 .memory {
@@ -68,4 +67,7 @@ button {
     margin-right: 10px;
     text-align: right;
     height: 1em;
+    font-family: "Digital7", Verdana, Tahoma;
 }
+
+

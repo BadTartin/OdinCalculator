@@ -1,6 +1,13 @@
 /* styles.css */
+/* * {
+    border: 1px solid red;
+} */
+
+
 
 .calContainer {
+    margin-left: 20%;
+    margin-top: 10%;
     display: grid;
     gap: 10px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -25,18 +32,42 @@
 button {
     border: 2px solid grey;
     border-radius: 6px;
+    background-color: lightgrey;
     /* text-align: center; */
     /* padding: 20px; */
 }
 
-.display {
-    text-align: center;
+
+.operator, .equals  {
+    background-color: lightblue;
+}
+
+.displayContainer {
     grid-column-start: 1;
     grid-column-end: 5;
+    grid-template-rows: 1fr 2fr 1fr;
+    /* grid-template-rows: 10px 20px 10px; */
     border: 2px solid lightgrey;
     border-radius: 6px;
     background-color: rgb(245, 245, 245);
-    font-size: 18pt;
+    height: 5em;
+}
+
+.display {
+    text-align: center;
+    /* border: 2px solid lightgrey; */
+    /* border-radius: 6px; */
+    /* background-color: rgb(245, 245, 245); */
+    font-size: 20pt;
+    /* margin: auto; */
     /* font-family: Orbitron; */
-    padding: 8% 0 0 0;
+    /* padding: 8% 0 0 0; */
+}
+
+.memory {
+    padding: 0;
+    margin-top: 0;
+    margin-right: 10px;
+    text-align: right;
+    height: 1em;
 }

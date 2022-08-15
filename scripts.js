@@ -77,8 +77,8 @@ btns.forEach(function (button) {
             var numOne = Number(display.innerText);
             
             if (memory.innerText == '') {
-                memory.innerText = numOne;
-                display.innerText = this.innerText;
+                memory.innerText = numOne + ' ' + this.innerText;
+                display.innerText = '';
             }
             else {
                 memory.innerText = operate(operator, Number(memory.innerText), Number(display.innerText));
@@ -93,7 +93,8 @@ btns.forEach(function (button) {
             }
             else {
                 toClear = 'true';
-                result = operate(operator, memory.innerText, display.innerText);
+                val = parseFloat(memory.innerText.split(' ')[0]);
+                result = operate(operator, val, display.innerText);
                 display.innerText = result;
                 memory.innerText = '';
                 break;
@@ -104,8 +105,7 @@ btns.forEach(function (button) {
 });
 
 // add operator to memory display
-// change display font to calculator type
-
+// keyboard support
 
 
 

@@ -21,19 +21,20 @@ function divide (a, b) {
 // takes an operator and 2 numbers and then 
 // calls one of the above functions on the numbers
 
+
 function operate (oper, num1, num2) {
     switch(oper) {
-        case "add":
-          return add(num1, num2)
+        case "+":
+          return Number(add(num1, num2).toFixed(15))
           break;
-        case "subtract":
-          return subtract(num1, num2)
+        case "-":
+          return Number(subtract(num1, num2).toFixed(15))
           break;
-        case "multiply":
-          return multiply(num1, num2)
+        case "*":
+          return Number(multiply(num1, num2).toFixed(15))
           break;
-        case "divide":
-          return divide(num1, num2)
+        case "/":
+          return Number(divide(num1, num2).toFixed(15))
           break;
       } 
 }
@@ -49,7 +50,6 @@ var btns = document.querySelectorAll('button');
 var memory = document.querySelector('.memory');
 var operator = '';
 var toClear = 'false';
-// var point = 'false';
 
 btns.forEach(function (button) {
     button.addEventListener("click", function () { 
@@ -81,10 +81,13 @@ btns.forEach(function (button) {
                 display.innerText = '';
             }
             else {
-                memory.innerText = operate(operator, Number(memory.innerText), Number(display.innerText));
-                display.innerText = this.innerText;
+                val = parseFloat(memory.innerText.split(' ')[0]);
+                result = operate(operator, val, display.innerText);
+                memory.innerText = result + ' ' + this.innerText;
+                display.innerText = '';
             }
-            operator = this.classList[1];
+            // operator = this.classList[1];
+            operator = this.innerText;
             toClear = 'true';
             break;
           case 'equals':
@@ -104,8 +107,64 @@ btns.forEach(function (button) {
     });
 });
 
-// add operator to memory display
-// keyboard support
 
+document.addEventListener('keydown', keyPressed);
 
+function keyPressed(event) {        
 
+    switch (true) {
+        case /[0-9]/.test(event.key):
+            if (toClear == 'true') { 
+                display.innerText = '';
+                toClear = 'false';
+                point = 'false';
+            }
+            display.innerText += event.key;
+            break;
+        case /[.]/.test(event.key):
+            if (toClear == 'true') { 
+                display.innerText = '';
+                toClear = 'false';
+                point = 'false';
+            }
+            if (event.key.includes(".") && 
+                display.innerText.includes(".")) {
+                break;
+            }
+            display.innerText += event.key;
+            break;
+        case /Backspace/.test(event.key):
+            display.innerText = display.innerText.slice(0, -1)
+            break;
+        case /[*+-\/]/.test(event.key):
+            var numOne = Number(display.innerText);
+                
+            if (memory.innerText == '') {
+                memory.innerText = numOne + ' ' + event.key;
+                display.innerText = '';
+            }
+            else {
+                val = parseFloat(memory.innerText.split(' ')[0]);
+                result = operate(operator, val, display.innerText);
+                memory.innerText = result + ' ' + event.key;
+                display.innerText = '';
+            }
+            // operator = operators[event.key];
+            operator = event.key;
+            toClear = 'true';
+            break;
+        case /=/.test(event.key):
+            if (numOne == '' || memory.innerText == '') {
+                break;
+            }
+            else {
+                toClear = 'true';
+                val = parseFloat(memory.innerText.split(' ')[0]);
+                result = operate(operator, val, display.innerText);
+                display.innerText = result;
+                memory.innerText = '';
+                break;
+            }
+      }
+
+}

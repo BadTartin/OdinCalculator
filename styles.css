@@ -4,7 +4,6 @@
 } */
 
 
-
 .calContainer {
     margin-left: 20%;
     margin-top: 10%;
@@ -14,9 +13,9 @@
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     width: 300px;
     height: 500px;
-    border: 5px solid grey;
+    border: 8px solid grey;
     padding: 15px;
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
 .clear {
@@ -76,4 +75,12 @@ button {
     font-size: 20px;
 }
 
+footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 12px;
+}
 
+.footer-link {
+    font-weight: bold;
+}
